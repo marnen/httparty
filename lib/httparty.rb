@@ -12,7 +12,7 @@ require dir + 'httparty/cookie_hash'
 require dir + 'httparty/net_digest_auth'
 
 module HTTParty
-  VERSION          = "0.6.1".freeze
+  VERSION          = "0.6.2".freeze
   CRACK_DEPENDENCY = "0.1.8".freeze
 
   module AllowedFormatsDeprecation
@@ -46,9 +46,11 @@ module HTTParty
     #     include HTTParty
     #     http_proxy 'http://foo.com', 80
     #   end
-    def http_proxy(addr=nil, port = nil)
+    def http_proxy(addr = nil, port = nil, user = nil, password = nil)
       default_options[:http_proxyaddr] = addr
       default_options[:http_proxyport] = port
+      default_options[:http_proxyuser] = user
+      default_options[:http_proxypassword] = password
     end
 
     # Allows setting a base uri to be used for each request.
@@ -199,26 +201,6 @@ module HTTParty
     #   end
     def pem(pem_contents)
       default_options[:pem] = pem_contents
-    end
-
-    # Allows setting an OpenSSL certificate authority file
-    #
-    #   class Foo
-    #     include HTTParty
-    #     ssl_ca_file '/etc/ssl/certs/ca-certificates.crt'
-    #   end
-    def ssl_ca_file(path)
-      default_options[:ssl_ca_file] = path
-    end
-
-    # Allows setting an OpenSSL certificate authority path (directory)
-    #
-    #   class Foo
-    #     include HTTParty
-    #     ssl_ca_path '/etc/ssl/certs/'
-    #   end
-    def ssl_ca_path(path)
-      default_options[:ssl_ca_path] = path
     end
 
     # Allows setting a custom parser for the response.
