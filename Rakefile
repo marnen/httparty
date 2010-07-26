@@ -9,7 +9,7 @@ begin
     gem.description = %Q{Makes http fun! Also, makes consuming restful web services dead easy.}
     gem.email       = "nunemaker@gmail.com"
     gem.homepage    = "http://httparty.rubyforge.org"
-    gem.authors     = ["John Nunemaker", "Sandro Turriate"]
+    gem.authors     = ["John Nunemaker", "Sandro Turriate", "Marnen Laibow-Koser"]
     gem.version     = HTTParty::VERSION
 
     gem.add_dependency 'crack', HTTParty::CRACK_DEPENDENCY
